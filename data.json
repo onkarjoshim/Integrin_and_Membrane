@@ -1,10 +1,34 @@
 {
   "last_updated": "2025-11-10 15:45:00",
   "simulations": [
-    {"name": "Case_1", "status": "Running", "simulation time": "12h 30m"},
-    {"name": "Case_2", "status": "Completed", "simulation time": "8h 05m"},
-    {"name": "Case_3", "status": "Queued", "simulation time": "-"},
-    {"name": "Case_4", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 23", "status": "Running", "simulation time": "12h 30m"},
+    {"name": "Integrin in Water - Angle 27", "status": "Completed", "simulation time": "8h 05m"},
+    {"name": "Integrin in Water - Angle 30", "status": "Queued", "simulation time": "-"},
+    {"name": "Integrin in Water - Angle 33", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 37", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 40", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 44", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 47", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Water - Angle 50", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 23", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 27", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 30", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 33", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 37", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 40", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 44", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 47", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Integrin in Membrane - Angle 50", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 23", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 27", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 30", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 33", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 37", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 40", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 44", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 47", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "3h 42m"}
   ]
 }
+
 
