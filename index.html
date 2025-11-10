@@ -42,10 +42,6 @@
     }
     tr:nth-child(even) { background-color: #f2f2f2; }
     tr:hover { background-color: #e8f0fe; }
-
-    .status-running { color: green; font-weight: bold; }
-    .status-completed { color: blue; font-weight: bold; }
-    .status-queued { color: gray; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -56,7 +52,6 @@
     <thead>
       <tr>
         <th>Simulation</th>
-        <th>Status</th>
         <th>Elapsed Time</th>
       </tr>
     </thead>
@@ -80,7 +75,6 @@
           const row = document.createElement('tr');
           row.innerHTML = `
             <td>${sim.name}</td>
-            <td class="status-${sim.status.toLowerCase()}">${sim.status}</td>
             <td>${sim.elapsed}</td>
           `;
           tbody.appendChild(row);
