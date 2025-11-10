@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Integrin Simulation Dashboard</title>
   <style>
     body {
@@ -12,47 +12,37 @@
       margin: 0;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-      color: #003366;
-    }
-    #update-time {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #555;
-    }
+    h1 { text-align: center; color: #003366; }
+    #update-time { text-align: center; margin-bottom: 12px; color: #555; }
     table {
-      width: 80%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+      width: 80%; margin: 0 auto; border-collapse: collapse;
+      background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 10px; overflow: hidden;
     }
-    th, td {
-      padding: 12px 15px;
-      text-align: center;
-    }
+    th, td { padding: 8px 12px; text-align: left; }
     th {
-      background-color: #003366;
-      color: white;
-      text-transform: uppercase;
-      font-size: 14px;
+      background-color: #003366; color: white; text-transform: uppercase;
+      font-size: 13px;
     }
     tr:nth-child(even) { background-color: #f2f2f2; }
     tr:hover { background-color: #e8f0fe; }
 
-    .status-running { color: green; font-weight: bold; }
-    .status-completed { color: blue; font-weight: bold; }
-    .status-queued { color: gray; font-weight: bold; }
+    /* status colors */
+    .status-running { color: #15803d; font-weight: 600; }
+    .status-completed { color: #1e40af; font-weight: 600; }
+    .status-queued { color: #6b7280; font-weight: 600; }
+
+    /* keep columns closer */
+    th:first-child, td:first-child { width: 65%; }
+    th:nth-child(2), td:nth-child(2) { width: 20%; text-align: center; }
+    th:nth-child(3), td:nth-child(3) { width: 15%; text-align: right; }
   </style>
 </head>
 <body>
   <h1>Integrin Simulation Progress</h1>
   <div id="update-time">Loading last updated time...</div>
 
-  <table id="simTable">
+  <table id="simTable" aria-describedby="update-time">
     <thead>
       <tr>
         <th>Simulation</th>
@@ -66,33 +56,53 @@
   <script>
     async function loadData() {
       try {
-        const response = await fetch('data.json');
+        // Prevent cached data (useful when you update data.json often)
+        const response = await fetch('data.json', { cache: 'no-store' });
         const data = await response.json();
 
         // Update "last updated" line
         document.getElementById('update-time').innerText =
-          'Last Updated On: ' + data.last_updated;
+          'Last Updated On: ' + (data.last_updated || 'Unknown');
 
         // Populate table
         const tbody = document.querySelector('#simTable tbody');
         tbody.innerHTML = '';
-        data.simulations.forEach(sim => {
+
+        (data.simulations || []).forEach(sim => {
+          const name = sim.name || '—';
+          const status = sim.status || '—';
+          // access "simulation time" safely (key contains a space)
+          const simTime = sim['simulation time'] || sim.elapsed || '—';
+
+          // safety: lower-case for class, but only letters/spaces allowed
+          const statusClass = 'status-' + (String(status).toLowerCase().replace(/[^a-z]/g,'') || 'unknown');
+
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td>${sim.name}</td>
-            <td class="status-${sim.status.toLowerCase()}">${sim.status}</td>
-            <td>${sim.elapsed}</td>
+            <td>${escapeHtml(name)}</td>
+            <td class="${statusClass}">${escapeHtml(status)}</td>
+            <td>${escapeHtml(simTime)}</td>
           `;
           tbody.appendChild(row);
         });
       } catch (error) {
+        console.error('Error loading/parsing data.json:', error);
         document.getElementById('update-time').innerText =
-          'Error loading data. Please check data.json.';
+          'Error loading data. Please check data.json (open console for details).';
       }
+    }
+
+    // very small helper to avoid accidental HTML injection if json has special chars
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
 
     loadData();
   </script>
 </body>
 </html>
-
