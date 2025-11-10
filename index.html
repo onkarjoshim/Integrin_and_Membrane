@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrin Simulation Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #003366;
+    }
+    #update-time {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+    }
+    th {
+      background-color: #003366;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    tr:nth-child(even) { background-color: #f2f2f2; }
+    tr:hover { background-color: #e8f0fe; }
+
+    .status-running { color: green; font-weight: bold; }
+    .status-completed { color: blue; font-weight: bold; }
+    .status-queued { color: gray; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Integrin Simulation Progress</h1>
+  <div id="update-time">Loading last updated time...</div>
+
+  <table id="simTable">
+    <thead>
+      <tr>
+        <th>Simulation</th>
+        <th>Status</th>
+        <th>Elapsed Time</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadData() {
+      try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+
+        // Update "last updated" line
+        document.getElementById('update-time').innerText =
+          'Last Updated On: ' + data.last_updated;
+
+        // Populate table
+        const tbody = document.querySelector('#simTable tbody');
+        tbody.innerHTML = '';
+        data.simulations.forEach(sim => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${sim.name}</td>
+            <td class="status-${sim.status.toLowerCase()}">${sim.status}</td>
+            <td>${sim.elapsed}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        document.getElementById('update-time').innerText =
+          'Error loading data. Please check data.json.';
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

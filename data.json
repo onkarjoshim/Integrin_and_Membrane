@@ -1,0 +1,9 @@
+{
+  "last_updated": "2025-11-10 15:45:00",
+  "simulations": [
+    {"name": "Case_1", "status": "Running", "elapsed": "12h 30m"},
+    {"name": "Case_2", "status": "Completed", "elapsed": "8h 05m"},
+    {"name": "Case_3", "status": "Queued", "elapsed": "-"},
+    {"name": "Case_4", "status": "Running", "elapsed": "3h 42m"}
+  ]
+}
