@@ -3,89 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Integrin Simulation Dashboard</title>
+  <title>Integrin Simulation Progress</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      color: #222;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #0f172a);
+      color: #f1f5f9;
       margin: 0;
-      padding: 20px;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
     }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      background-color: rgba(30, 41, 59, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+    }
+
     h1 {
       text-align: center;
-      color: #003366;
+      font-size: 2em;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    #update-time {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #555;
-    }
+
     table {
-      width: 80%;
-      margin: 0 auto;
+      width: 100%;
       border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
     }
+
     th, td {
-      padding: 12px 15px;
-      text-align: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
     }
+
     th {
-      background-color: #003366;
-      color: white;
+      color: #94a3b8;
       text-transform: uppercase;
-      font-size: 14px;
+      font-weight: 500;
+      font-size: 0.85rem;
     }
-    tr:nth-child(even) { background-color: #f2f2f2; }
-    tr:hover { background-color: #e8f0fe; }
+
+    td {
+      color: #f8fafc;
+      font-weight: 400;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+    }
+
+    .last-updated {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    /* Reduce space between columns */
+    table td:first-child, table th:first-child {
+      width: 55%;
+    }
+
+    table td:last-child, table th:last-child {
+      width: 45%;
+      text-align: right;
+    }
   </style>
 </head>
 <body>
-  <h1>Integrin Simulation Progress</h1>
-  <div id="update-time">Loading last updated time...</div>
-
-  <table id="simTable">
-    <thead>
-      <tr>
-        <th>Simulation</th>
-        <th>Elapsed Time</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <script>
-    async function loadData() {
-      try {
-        const response = await fetch('data.json');
-        const data = await response.json();
-
-        // Update "last updated" line
-        document.getElementById('update-time').innerText =
-          'Last Updated On: ' + data.last_updated;
-
-        // Populate table
-        const tbody = document.querySelector('#simTable tbody');
-        tbody.innerHTML = '';
-        data.simulations.forEach(sim => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${sim.name}</td>
-            <td>${sim.elapsed}</td>
-          `;
-          tbody.appendChild(row);
-        });
-      } catch (error) {
-        document.getElementById('update-time').innerText =
-          'Error loading data. Please check data.json.';
-      }
-    }
-
-    loadData();
-  </script>
+  <div class="container">
+    <h1>Integrin Simulation Progress</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Case Name</th>
+          <th>Simulation Time (ns)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Case 1: Wild-type αIIbβ3</td><td>120 ns</td></tr>
+        <tr><td>Case 2: Mutant E382A</td><td>95 ns</td></tr>
+        <tr><td>Case 3: Ligand-bound</td><td>145 ns</td></tr>
+        <tr><td>Case 4: Extended conformation</td><td>80 ns</td></tr>
+        <tr><td>Case 5: Cytoplasmic tail</td><td>102 ns</td></tr>
+      </tbody>
+    </table>
+    <p class="last-updated">Last updated: November 10, 2025</p>
+  </div>
 </body>
 </html>
