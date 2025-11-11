@@ -23,12 +23,13 @@
     {"name": "Only Transmembrane - Angle 27", "status": "Running", "simulation time": "130.24 ns"},
     {"name": "Only Transmembrane - Angle 30", "status": "Running", "simulation time": "105.46 ns"},
     {"name": "Only Transmembrane - Angle 33", "status": "Running", "simulation time": "144.03 ns"},
-    {"name": "Only Transmembrane - Angle 37", "status": "Running", "simulation time": "3h 42m"},
-    {"name": "Only Transmembrane - Angle 40", "status": "Running", "simulation time": "3h 42m"},
-    {"name": "Only Transmembrane - Angle 44", "status": "Running", "simulation time": "3h 42m"},
-    {"name": "Only Transmembrane - Angle 47", "status": "Running", "simulation time": "3h 42m"},
-    {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "3h 42m"}
+    {"name": "Only Transmembrane - Angle 37", "status": "Running", "simulation time": "75.69 ns"},
+    {"name": "Only Transmembrane - Angle 40", "status": "Running", "simulation time": "92.28 ns"},
+    {"name": "Only Transmembrane - Angle 44", "status": "Running", "simulation time": "68.09 ns"},
+    {"name": "Only Transmembrane - Angle 47", "status": "Running", "simulation time": "57.59 ns"},
+    {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "57.58 ns"}
   ]
 }
+
 
 
