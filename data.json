@@ -14,7 +14,7 @@
     {"name": "Integrin in Membrane - Angle 27", "status": "Running", "simulation time": "85.31 ns"},
     {"name": "Integrin in Membrane - Angle 30", "status": "Running", "simulation time": "100.90 ns"},
     {"name": "Integrin in Membrane - Angle 33", "status": "Running", "simulation time": "-"},
-    {"name": "Integrin in Membrane - Angle 37", "status": "Equilibrating", "simulation time": "-"},
+    {"name": "Integrin in Membrane - Angle 37", "status": "Running", "simulation time": "-"},
     {"name": "Integrin in Membrane - Angle 40", "status": "Running", "simulation time": "-"},
     {"name": "Integrin in Membrane - Angle 44", "status": "Running", "simulation time": "-"},
     {"name": "Integrin in Membrane - Angle 47", "status": "Equilibrating", "simulation time": "-"},
@@ -30,6 +30,7 @@
     {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "57.58 ns"}
   ]
 }
+
 
 
 
