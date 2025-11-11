@@ -46,10 +46,10 @@
     th:nth-child(2), td:nth-child(2) { width: 25%; text-align: center; }
     th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
 
-    /* first column group colors */
-    .group-water { background-color: #dbeafe; }          /* light blue */
-    .group-membrane { background-color: #d1fae5; }       /* light green */
-    .group-transmembrane { background-color: #fee2e2; }  /* light red */
+    /* first column font colors per group */
+    .group-water { color: #1d4ed8; font-weight: 600; }          /* blue */
+    .group-membrane { color: #16a34a; font-weight: 600; }       /* green */
+    .group-transmembrane { color: #dc2626; font-weight: 600; }  /* red */
   </style>
 </head>
 <body>
@@ -85,7 +85,7 @@
           const simTime = sim['simulation time'] || sim.elapsed || '—';
           const statusClass = 'status-' + (String(status).toLowerCase().replace(/[^a-z]/g,'') || 'unknown');
 
-          // assign group color for first column
+          // assign font color for first column based on group
           let groupClass = '';
           if (index < 9) groupClass = 'group-water';
           else if (index < 18) groupClass = 'group-membrane';
