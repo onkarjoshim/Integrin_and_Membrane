@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-11-10 15:45:00",
+  "last_updated": "2025-11-10 18:15:00",
   "simulations": [
     {"name": "Integrin in Water - Angle 23", "status": "Not Started", "simulation time": "12h 30m"},
     {"name": "Integrin in Water - Angle 27", "status": "Not Started", "simulation time": "8h 05m"},
@@ -30,6 +30,7 @@
     {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "57.58 ns"}
   ]
 }
+
 
 
 
