@@ -14,16 +14,25 @@
     }
     h1 { text-align: center; color: #003366; }
     #update-time { text-align: center; margin-bottom: 12px; color: #555; }
+
     table {
-      width: 80%; margin: 0 auto; border-collapse: collapse;
-      background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      border-radius: 10px; overflow: hidden;
+      width: 80%; 
+      margin: 0 auto; 
+      border-collapse: collapse;
+      background: white; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 10px; 
+      overflow: hidden;
     }
+
     th, td { padding: 8px 12px; text-align: left; }
     th {
-      background-color: #003366; color: white; text-transform: uppercase;
+      background-color: #003366; 
+      color: white; 
+      text-transform: uppercase;
       font-size: 16px;
     }
+
     tr:nth-child(even) { background-color: #f2f2f2; }
     tr:hover { background-color: #e8f0fe; }
 
@@ -32,12 +41,15 @@
     .status-completed { color: #1e40af; font-weight: 600; }
     .status-queued { color: #6b7280; font-weight: 600; }
 
-    /* keep columns closer */
-/* tighter column spacing */
-th:first-child, td:first-child { width: 30%; text-align: center; }
-th:nth-child(2), td:nth-child(2) { width: 25%; text-align: center; }
-th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
+    /* column widths */
+    th:first-child, td:first-child { width: 30%; text-align: center; }
+    th:nth-child(2), td:nth-child(2) { width: 25%; text-align: center; }
+    th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
 
+    /* first column group colors */
+    .group-water { background-color: #dbeafe; }          /* light blue */
+    .group-membrane { background-color: #d1fae5; }       /* light green */
+    .group-transmembrane { background-color: #fee2e2; }  /* light red */
   </style>
 </head>
 <body>
@@ -58,30 +70,30 @@ th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
   <script>
     async function loadData() {
       try {
-        // Prevent cached data (useful when you update data.json often)
         const response = await fetch('data.json', { cache: 'no-store' });
         const data = await response.json();
 
-        // Update "last updated" line
         document.getElementById('update-time').innerText =
           'Last Updated On: ' + (data.last_updated || 'Unknown');
 
-        // Populate table
         const tbody = document.querySelector('#simTable tbody');
         tbody.innerHTML = '';
 
-        (data.simulations || []).forEach(sim => {
+        (data.simulations || []).forEach((sim, index) => {
           const name = sim.name || '—';
           const status = sim.status || '—';
-          // access "simulation time" safely (key contains a space)
           const simTime = sim['simulation time'] || sim.elapsed || '—';
-
-          // safety: lower-case for class, but only letters/spaces allowed
           const statusClass = 'status-' + (String(status).toLowerCase().replace(/[^a-z]/g,'') || 'unknown');
+
+          // assign group color for first column
+          let groupClass = '';
+          if (index < 9) groupClass = 'group-water';
+          else if (index < 18) groupClass = 'group-membrane';
+          else groupClass = 'group-transmembrane';
 
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td>${escapeHtml(name)}</td>
+            <td class="${groupClass}">${escapeHtml(name)}</td>
             <td class="${statusClass}">${escapeHtml(status)}</td>
             <td>${escapeHtml(simTime)}</td>
           `;
@@ -94,7 +106,6 @@ th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
       }
     }
 
-    // very small helper to avoid accidental HTML injection if json has special chars
     function escapeHtml(str) {
       return String(str)
         .replace(/&/g, '&amp;')
@@ -108,7 +119,3 @@ th:nth-child(3), td:nth-child(3) { width: 25%; text-align: center; }
   </script>
 </body>
 </html>
-
-
-
-
