@@ -21,15 +21,16 @@
     {"name": "Integrin in Membrane - Angle 50", "status": "Running", "simulation time": "86.33 ns"},
     {"name": "Only Transmembrane - Angle 23", "status": "Running", "simulation time": "585.50 ns"},
     {"name": "Only Transmembrane - Angle 27", "status": "Running", "simulation time": "406.26 ns"},
-    {"name": "Only Transmembrane - Angle 30", "status": "Running", "simulation time": "396.60 ns"},
-    {"name": "Only Transmembrane - Angle 33", "status": "Running", "simulation time": "449.42 ns"},
-    {"name": "Only Transmembrane - Angle 37", "status": "Running", "simulation time": "285.72 ns"},
-    {"name": "Only Transmembrane - Angle 40", "status": "Running", "simulation time": "305.76 ns"},
-    {"name": "Only Transmembrane - Angle 44", "status": "Running", "simulation time": "242.13 ns"},
-    {"name": "Only Transmembrane - Angle 47", "status": "Running", "simulation time": "248.42 ns"},
-    {"name": "Only Transmembrane - Angle 50", "status": "Running", "simulation time": "211.32 ns"}
+    {"name": "Only Transmembrane - Angle 30", "status": "Stopped", "simulation time": "396.60 ns"},
+    {"name": "Only Transmembrane - Angle 33", "status": "Stopped", "simulation time": "449.42 ns"},
+    {"name": "Only Transmembrane - Angle 37", "status": "Stopped", "simulation time": "285.72 ns"},
+    {"name": "Only Transmembrane - Angle 40", "status": "Stopeed", "simulation time": "305.76 ns"},
+    {"name": "Only Transmembrane - Angle 44", "status": "Stopped", "simulation time": "242.13 ns"},
+    {"name": "Only Transmembrane - Angle 47", "status": "Stopped", "simulation time": "248.42 ns"},
+    {"name": "Only Transmembrane - Angle 50", "status": "Stopped", "simulation time": "211.32 ns"}
   ]
 }
+
 
 
 
